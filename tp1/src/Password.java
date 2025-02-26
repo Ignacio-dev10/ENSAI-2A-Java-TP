@@ -39,19 +39,16 @@ public class Password {
      * @return the 6-digit number that matches, or null if no match is found
      */
     public static String bruteForce6Digit(String targetHash) {
-
+        String test = "jsp";
         for (int i = 0; i < 1000000; i++) {
-            String test = String.format("%06d", i);
+            test = String.format("%06d", i);
             String mdp = hashPassword(test);
-            if (test != mdp) {
-                continue;
-            } else {
-                System.out.println("Votre mot de passe est: " + i);
+            if (mdp.equals(targetHash)) {
                 break;
             }
+            System.out.println("Itération: " + test);
         }
-
-        return null;
+        return test;
     }
 
     /**
@@ -69,10 +66,44 @@ public class Password {
      * @return true if the password is strong, false otherwise
      */
     public static boolean isStrongPassword(String password) {
+        int n = password.length();
+        int maj = 0;
+        int min = 0;
+        int chi = 0;
+        int esp = 0;
 
-        // Code here
+        for (int i = 0; i < n; i++) {
+            char test = password.charAt(i);
+            if (Character.isUpperCase(test)) {
+                maj += 1;
+            } else if (Character.isLowerCase(test)) {
+                min += 1;
+            } else if (Character.isWhitespace(test)) {
+                esp += 1;
+            } else if (Character.isDigit(test)) {
+                chi += 1;
+            }
 
-        return false;
+        }
+        if (n < 12) {
+            System.out.println("Il faut 12 caractères, savez-vous lire ?");
+            return false;
+        } else if (maj == 0) {
+            System.out.println("Il faut au moins une majuscule, êtes-vous bête ?");
+            return false;
+        } else if (min == 0) {
+            System.out.println("Il faut au moins une minuscule, vous êtes sérieux ?");
+            return false;
+        } else if (esp > 0) {
+            System.out.println("Les espaces sont interdits, faites des efforts !");
+            return false;
+        } else if (chi == 0) {
+            System.out.println("Il faut au moins un chiffre, vous faites bien chi...");
+            return false;
+        } else {
+            System.out.println("Bravo !");
+            return true;
+        }
     }
 
     /**
