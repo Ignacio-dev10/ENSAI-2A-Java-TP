@@ -86,22 +86,22 @@ public class Password {
 
         }
         if (n < 12) {
-            System.out.println("Il faut 12 caractères, savez-vous lire ?");
+            // System.out.println("Il faut 12 caractères, savez-vous lire ?");
             return false;
         } else if (maj == 0) {
-            System.out.println("Il faut au moins une majuscule, êtes-vous bête ?");
+            // System.out.println("Il faut au moins une majuscule, êtes-vous bête ?");
             return false;
         } else if (min == 0) {
-            System.out.println("Il faut au moins une minuscule, vous êtes sérieux ?");
+            // System.out.println("Il faut au moins une minuscule, vous êtes sérieux ?");
             return false;
         } else if (esp > 0) {
-            System.out.println("Les espaces sont interdits, faites des efforts !");
+            // System.out.println("Les espaces sont interdits, faites des efforts !");
             return false;
         } else if (chi == 0) {
-            System.out.println("Il faut au moins un chiffre, vous faites bien chi...");
+            // System.out.println("Il faut au moins un chiffre, vous faites bien chi...");
             return false;
         } else {
-            System.out.println("Bravo !");
+            // System.out.println("Bravo !");
             return true;
         }
     }
@@ -115,10 +115,13 @@ public class Password {
      *         true if the password is strong, false otherwise
      */
     public static HashMap<String, Boolean> checkPasswordsList(ArrayList<String> passwords) {
-
-        // Code here
-
-        return null;
+        HashMap<String, Boolean> mots = new HashMap<>();
+        for (String mdp : passwords) {
+            boolean bool = isStrongPassword(mdp);
+            mots.put(mdp, bool);
+        }
+        System.out.println(mots);
+        return mots;
     }
 
     /**
@@ -134,9 +137,16 @@ public class Password {
      * @return A randomly generated password that meets the security criteria.
      */
     public static String generatePassword(int nbCar) {
+        String up = "ABCDEFGHIJKLMNOPQRSTUVWSYZ";
+        String low = "abcdefghijklmnopqrstuvwsyz";
+        String dig = "1234567890";
+        String spec = "&#@$!,;.:-*/";
 
-        // Code here
+        if (nbCar < 4) {
+            throw new IllegalArgumentException("Le mdp doit contenir au moins 4 caractères.");
+        }
 
+        for(int i = 0)
         return null;
     }
 
