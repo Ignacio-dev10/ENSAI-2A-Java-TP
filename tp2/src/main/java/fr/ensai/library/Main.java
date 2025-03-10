@@ -14,5 +14,31 @@ public class Main {
                 423);
 
         System.out.println(fellowshipOfTheRing.toString());
+
+        Library MyLibrary = new Library("MyLibrary");
+
+        MyLibrary.loadBooksFromCSV("books.csv");
+
+        MyLibrary.displayItems();
+
+        Magazine NationalGeographic = new Magazine(
+                "0027-9358",
+                "National Geographic",
+                786,
+                2024,
+                120);
+
+        Magazine Science = new Magazine(
+                "0036-8075",
+                "Science",
+                6594,
+                2024,
+                98);
+
+        MyLibrary.addItem(NationalGeographic);
+        MyLibrary.addItem(Science);
+
+        MyLibrary.displayItems();
+
     }
 }

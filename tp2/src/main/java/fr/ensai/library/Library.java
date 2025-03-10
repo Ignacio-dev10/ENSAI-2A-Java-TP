@@ -6,31 +6,32 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Library {
 
     // Attributes
     private String name;
-    private ArrayList<Book> book_list;
+    private List<Item> item_list;
 
     /**
-     * Constructs a new Book object.
+     * Constructs a new Library object.
      */
-    public Library(String name, ArrayList<Book> book_list) {
+    public Library(String name) {
         this.name = name;
-        this.book_list = book_list;
+        this.item_list = new ArrayList<>();
     }
 
     // Method
-    public void addBook(Book book) {
-        this.book_list.add(book);
+    public void addItem(Item item) {
+        this.item_list.add(item);
     }
 
     // Method
-    public void displayBooks() {
-        for (Book book : this.book_list) {
-            System.out.println(book.toString());
+    public void displayItems() {
+        for (Item item : this.item_list) {
+            System.out.println(item);
         }
         ;
     }
@@ -70,7 +71,7 @@ public class Library {
                     }
                     Book book = new Book(isbn, title, author, year, pageCount);
 
-                    this.addBook(book);
+                    this.addItem(book);
                 }
             }
         } catch (
